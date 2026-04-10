@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Highlight AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 340px !important;
+      height: 480px !important;
+      min-width: 340px !important;
+      min-height: 480px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+    }
+
+    body {
+      width: 340px;
+      height: 480px;
+      min-width: 340px;
+      min-height: 480px;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      font-family: 'DM Sans', sans-serif;
+      padding: 0;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      overflow: hidden;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1a1040 0%, #0a0a2e 50%, #0a1a10 100%);
+      padding: 28px 24px 20px;
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+      cursor: move;
+    }
+
+    .popup-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .popup-close {
+      width: 24px;
+      height: 24px;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .popup-close:hover {
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 140px; height: 140px;
+      background: radial-gradient(circle, rgba(167,139,250,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30px; left: -20px;
+      width: 100px; height: 100px;
+      background: radial-gradient(circle, rgba(96,165,250,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .logo-mark {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, #a78bfa, #60a5fa);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 4px 14px rgba(167,139,250,0.3);
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .logo-sub {
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-tagline {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+    }
+
+    /* Feature pills */
+    .feature-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      padding: 3px 9px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* Body */
+    .body {
+      height: 380px;
+      padding: 20px 22px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.2) transparent;
+    }
+
+    .body::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .body::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .body::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.2);
+      border-radius: 3px;
+    }
+
+    .body::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 8px;
+    }
+
+    .api-key-wrap {
+      position: relative;
+      margin-bottom: 14px;
+    }
+
+    input[type="password"], input[type="text"] {
+      width: 100%;
+      padding: 10px 40px 10px 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 12.5px;
+      font-family: 'DM Mono', monospace;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    input:focus {
+      border-color: rgba(167,139,250,0.5);
+      background: rgba(167,139,250,0.05);
+    }
+
+    .toggle-vis {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.35);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px;
+    }
+
+    .toggle-vis:hover { color: rgba(255,255,255,0.7); }
+
+    .save-btn {
+      width: 100%;
+      padding: 11px;
+      background: linear-gradient(135deg, #7c3aed, #2563eb);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      letter-spacing: 0.01em;
+    }
+
+    .save-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .save-btn:active { transform: translateY(0); }
+
+    .status {
+      margin-top: 10px;
+      font-size: 12px;
+      text-align: center;
+      min-height: 18px;
+      transition: color 0.2s;
+    }
+
+    .status.ok { color: #4ade80; }
+    .status.err { color: #f87171; }
+
+    /* How to use */
+    .how-to {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .step-num {
+      width: 20px; height: 20px;
+      background: rgba(167,139,250,0.15);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: #c4b5fd;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-text {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.4;
+    }
+
+    .step-text strong {
+      color: rgba(255,255,255,0.8);
+      font-weight: 500;
+    }
+
+    .api-link {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 11px;
+      color: rgba(167,139,250,0.8);
+      text-decoration: none;
+    }
+
+    .api-link:hover { color: #c4b5fd; }
+  </style>
+</head>
+<body style="width: 340px !important; height: 480px !important; min-width: 340px !important; min-height: 480px !important; margin: 0 !important; padding: 0 !important;">
+  <div class="hero">
+    <div class="popup-header">
+      <div class="logo-row">
+        <div class="logo-mark">✦</div>
+        <div>
+          <div class="logo-text">Highlight AI</div>
+          <div class="logo-sub">Smart text assistant</div>
+        </div>
+      </div>
+      <button class="popup-close" id="popup-close">✕</button>
+    </div>
+    <p class="hero-tagline">9 AI-powered actions: explain, improve readability, analyze sentiment & tone, summarize, take notes, ask questions, and translate.</p>
+    <div class="feature-pills">
+      <span class="pill">🧠 Explain</span>
+      <span class="pill">✨ Improve</span>
+      <span class="pill">📊 Readability</span>
+      <span class="pill">😊 Sentiment</span>
+      <span class="pill">🌐 Translate</span>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="section-label">Hugging Face API Key</div>
+    <div class="api-key-wrap">
+      <input type="password" id="apiKey" placeholder="Enter your Hugging Face API key" autocomplete="off" />
+      <button class="toggle-vis" id="toggleVis" title="Show/hide">👁</button>
+    </div>
+    <button class="save-btn" id="saveBtn">Save Key & Activate</button>
+    <div class="status" id="status"></div>
+
+    <div class="how-to">
+      <div class="section-label">How to use</div>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text"><strong>Highlight</strong> any text on any website</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">A <strong>floating panel</strong> opens in the <strong>top-right corner</strong></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text"><strong>9 AI actions:</strong> Explain, Improve, Simplify, Summarize, Notes, Ask, Tone, Sentiment, Readability, Translate</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">Get instant <strong>reading time</strong>, <strong>statistics</strong>, and <strong>key points</strong></div>
+      </div>
+
+      <a href="https://huggingface.co/settings/tokens" target="_blank" class="api-link">
+        → Get your free Hugging Face API key ↗
+      </a>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
