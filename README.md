@@ -168,10 +168,64 @@ This project is an excellent submission because it demonstrates:
 
 ---
 
+## 🧭 Demo Flow: Extension Lifecycle
+
+The following demo flow shows how `Highlight AI` behaves from installation to output delivery.
+
+1. **Install and configure the extension**
+   - Load the unpacked extension in Chrome/Edge.
+   - Open the popup and enter your Hugging Face API token.
+   - Save and activate the extension.
+
+2. **Select text on any webpage**
+   - Highlight a paragraph or sentence in the browser.
+   - The floating trigger pill appears automatically.
+
+3. **Open the action panel**
+   - Click the floating trigger or use the auto-open flow.
+   - The top-right panel appears with available actions.
+
+4. **Choose an AI action**
+   - Pick Explain, Improve, Simplify, Summarize, Notes, Ask, Tone, Sentiment, Readability, or Translate.
+   - The extension creates a prompt and sends it to Hugging Face.
+
+5. **Receive and review the response**
+   - The response is formatted and displayed in the panel.
+   - Confidence, reading time, statistics, and key points appear.
+   - Copy the result directly from the panel.
+
+---
+
+## 📊 Mockup Diagram
+
+```text
+[ User highlights text ]
+              |
+              v
+ [ Floating trigger pill appears ]
+              |
+              v
+[ Top-right action panel opens ]
+              |
+              v
+[ User selects AI action ]
+              |
+              v
+[ Prompt sent to Hugging Face API ]
+              |
+              v
+[ AI response received and formatted ]
+              |
+              v
+[ Result displayed with metrics and copy button ]
+```
+
+---
+
 ## 📚 License
 
 This repository is provided for educational and submission use. Replace or extend the Hugging Face integration as needed for your deployment.
 
 ---
 
-If you want, I can also add a complete mockup diagram and demo flow section showing the extension lifecycle step by step.
+Thank you for the prompt—this README now includes a complete mockup diagram and lifecycle flow section for project submission.
