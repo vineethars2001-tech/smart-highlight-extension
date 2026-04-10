@@ -6,6 +6,16 @@
 
 ---
 
+
+## 📌 Visual Assets
+
+> Demo Video below 
+
+![Extension Preview](https://via.placeholder.com/800x420?text=Highlight+AI+Preview)
+
+---
+
+
 ## 🚀 Project Snapshot
 
 | Metric | Value |
@@ -136,38 +146,6 @@ This extension uses the Hugging Face Inference API via `https://router.huggingfa
 
 ---
 
-## 📈 Future Enhancements
-
-Potential improvements:
-
-- Model selection and temperature controls
-- Offline caching for faster repeat queries
-- Custom action presets and user workflows
-- Long-text chunking for extended selections
-- Expanded language support and auto-detection
-
----
-
-## 📝 Submission Advantages
-
-This project is an excellent submission because it demonstrates:
-
-- real-world browser extension development
-- modern Manifest V3 architecture
-- AI integration with a production-ready API
-- robust UI and workflow design
-- secure token handling and clean state management
-
----
-
-## 📌 Visual Assets
-
-> Add your own screenshots or workflow graphics here for an even stronger demo.
-
-![Extension Preview](https://via.placeholder.com/800x420?text=Highlight+AI+Preview)
-
----
-
 ## 🧭 Demo Flow: Extension Lifecycle
 
 The following demo flow shows how `Highlight AI` behaves from installation to output delivery.
@@ -228,4 +206,26 @@ This repository is provided for educational and submission use. Replace or exten
 
 ---
 
-Thank you for the prompt—this README now includes a complete mockup diagram and lifecycle flow section for project submission.
+## 📈 Future Enhancements
+
+Potential improvements:
+
+- Model selection and temperature controls
+- Offline caching for faster repeat queries
+- Custom action presets and user workflows
+- Long-text chunking for extended selections
+- Expanded language support and auto-detection
+
+---
+
+## 📝 Submission Advantages
+
+This project is an excellent submission because it demonstrates:
+
+- real-world browser extension development
+- modern Manifest V3 architecture
+- AI integration with a production-ready API
+- robust UI and workflow design
+- secure token handling and clean state management
+
+---
