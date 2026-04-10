@@ -11,7 +11,12 @@
 
 > Demo Video below 
 
-![Extension Preview](https://via.placeholder.com/800x420?text=Highlight+AI+Preview)
+
+
+
+https://github.com/user-attachments/assets/469c1aad-b031-48a4-9089-53b3cd538da7
+
+
 
 ---
 
